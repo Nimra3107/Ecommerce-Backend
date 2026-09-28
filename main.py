@@ -20,7 +20,7 @@ app = FastAPI()
 # Allow React frontend to communicate with FastAPI
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["https://ecommerce-frontend-lac-tau.vercel.app/"],
     allow_credentials=True,  #Frontend ko credentials ke saath requests karne ki permission do.
     allow_methods=["*"],    #Allow all the HTTP methods get,post,put,delete
     allow_headers=["*"],
@@ -356,46 +356,6 @@ def get_all_orders():
         result.append(order)
 
     return result
-
-#order status
-# @app.patch("/admin/orders/{order_id}/status")
-# def update_order_status(
-#     order_id: int,
-#     status_data: OrderStatusUpdate
-# ):
-
-#     allowed_statuses = [
-#         "Pending",
-#         "Processing",
-#         "Shipped",
-#         "Delivered",
-#         "Cancelled"
-#     ]
-
-#     if status_data.status not in allowed_statuses:
-#         return {
-#             "message": "Invalid order status"
-#         }
-
-#     response = (
-#         supabase
-#         .table("orders")
-#         .update({
-#             "status": status_data.status
-#         })
-#         .eq("id", order_id)
-#         .execute()
-#     )
-
-#     if not response.data:
-#         return {
-#             "message": "Order not found"
-#         }
-
-#     return {
-#         "message": "Order status updated successfully",
-#         "order": response.data[0]
-#     }
 
 
 class OrderStatusUpdate(BaseModel):
