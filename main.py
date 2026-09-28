@@ -20,7 +20,7 @@ app = FastAPI()
 # Allow React frontend to communicate with FastAPI
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://ecommerce-frontend-lac-tau.vercel.app/"],
+    allow_origins=["https://ecommerce-frontend-lac-tau.vercel.app"],
     allow_credentials=True,  #Frontend ko credentials ke saath requests karne ki permission do.
     allow_methods=["*"],    #Allow all the HTTP methods get,post,put,delete
     allow_headers=["*"],
